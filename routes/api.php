@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('suppliers', 'SupplierController@getAll');
+Route::get('supplier/{id}', 'SupplierController@get');
+Route::post('supplier', 'SupplierController@create');
+Route::put('supplier/{id}', 'SupplierController@update');
+Route::delete('supplier/{id}','SupplierController@destroy');
