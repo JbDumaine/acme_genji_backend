@@ -27,9 +27,9 @@ class SupplierController extends Controller
     {
         $supplier = new Supplier($request->json()->all());
         if (!$supplier->save()) {
-            return response()->json("New supplier not saved", 500);
+            return response()->json("New supplier not saved!", 500);
         }
-        return response()->json("New Supplier Saved", 200);
+        return response()->json("New Supplier Saved!", 200);
     }
 
 
