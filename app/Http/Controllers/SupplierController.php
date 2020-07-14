@@ -13,7 +13,7 @@ class SupplierController extends Controller
      */
     public function getAll()
     {
-        //
+        return "Salut les copainssss";
     }
 
     /**
@@ -36,7 +36,7 @@ class SupplierController extends Controller
      */
     public function get($id)
     {
-        //
+       return "Salut ".$id;
     }
 
 
