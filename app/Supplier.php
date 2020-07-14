@@ -11,9 +11,11 @@ class Supplier extends Model
      *
      * @var string
      */
-    protected $table = 'suppliers';
+    protected $table = 'supplier';
     protected $primaryKey = 'id';
     protected $fillable = [
         'name'
     ];
+
+    
 }

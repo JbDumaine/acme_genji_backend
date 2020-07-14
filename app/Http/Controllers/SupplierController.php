@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Supplier;
 
 class SupplierController extends Controller
 {
@@ -13,7 +14,8 @@ class SupplierController extends Controller
      */
     public function getAll()
     {
-        return "Salut les copainssss";
+        $suppliers = Supplier::all();
+        return response()->json($suppliers);
     }
 
     /**
@@ -21,9 +23,13 @@ class SupplierController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $supplier = new Supplier($request->json()->all());
+        if (!$supplier->save()) {
+            return response()->json("New supplier not saved", 500);
+        }
+        return response()->json("New Supplier Saved", 200);
     }
 
 
@@ -36,7 +42,8 @@ class SupplierController extends Controller
      */
     public function get($id)
     {
-       return "Salut ".$id;
+        $supplier = Supplier::find($id);
+        return response()->json($supplier);
     }
 
 
@@ -49,7 +56,13 @@ class SupplierController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $supplier = Supplier::find($id);
+        $supplier->name = $request->name;
+
+        if ($supplier->save()) {
+            return response()->json($supplier, 200);
+        }
+        return response()->json("Supplier not updated", 500);
     }
 
     /**
@@ -60,6 +73,10 @@ class SupplierController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $supplier = Supplier::find($id);
+        if($supplier->delete()){
+            return response()->json("Supplier id ".$id." removed", 200);
+        }
+        return response()->json("Supplier id ".$id." not removed. An error occurred", 500);
     }
 }
