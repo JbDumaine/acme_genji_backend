@@ -17,5 +17,7 @@ Bonne pratique :
 
 - Avant de faire un git add / git commit, faire un git status
 
+- Lien pour best practice sql : https://www.sqlstyle.guide/#:~:text=Names%20must%20begin%20with%20a,(first%20name%20becomes%20first_name%20).
+
 
 Une fois par semaine : à partir de 18h30 le mercredi
