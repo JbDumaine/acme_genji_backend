@@ -8,7 +8,12 @@ Bonne pratique :
 
 - Faire attention au commande git si jamais un problème appeler Nary : 0650540958
 
--Créer un branch pour chaque feature / fix.
+- Créer un branch pour chaque feature / fix :
+        -git flow feature start [nom_branche]
+        -git flow feature publish [nom_branche]
+        -créer la PR
+        -git flow feature finish [nom_branche] ou merge sur github
+        -puis push ou pull develop en fonction de l'endroit de la merge
 
 - Avant de faire un git add / git commit, faire un git status
 
