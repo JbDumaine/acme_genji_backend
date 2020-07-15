@@ -1,0 +1,16 @@
+Bonne pratique :
+
+- Faire des commits régulier
+
+- Faire des Pull Request après chaque fonctionnalité terminée
+
+- Attente 24h avant de merge PR sauf demande de revues spécifiques
+
+- Faire attention au commande git si jamais un problème appeler Nary : 0650540958
+
+-Créer un branch pour chaque feature / fix.
+
+- Avant de faire un git add / git commit, faire un git status
+
+
+Une fois par semaine : à partir de 18h30 le mercredi
