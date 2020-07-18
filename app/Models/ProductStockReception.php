@@ -16,13 +16,13 @@ class ProductStockReception extends Model
 
     protected $guarded = [];
 
-    // Method allowing to recover category of product.
+    // Method allowing to recover stock reception of product stock reception.
     public function getStockReception()
     {
         return $this->belongsTo('\App\Models\StockReception', 'stock_reception_id', 'id');
     }
 
-    // Method allowing to recover supplier of product.
+    // Method allowing to recover product of product stock reception.
     public function getProduct()
     {
         return $this->belongsTo('\App\Models\Product', 'product_id', 'id');
