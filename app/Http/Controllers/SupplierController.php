@@ -14,6 +14,7 @@ class SupplierController extends Controller
      */
     public function getAll()
     {
+        
         $suppliers = Supplier::all();
         return response()->json($suppliers);
     }

@@ -13,9 +13,15 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard(); // Disable mass assignment
-
+        $this->call(UsersTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
-
+        $this->call(SuppliersTableSeeder::class);
+        $this->call(StoresTableSeeder::class);
+        $this->call(ProductsTableSeeder::class);
+        $this->call(StockReceptionsTableSeeder::class);
+        $this->call(CommandsTableSeeder::class);
+        $this->call(ProductCommandsTableSeeder::class);
+        $this->call(ProductStockReceptionsTableSeeder::class);
         Model::reguard(); // Enable mass assignment
     }
 }

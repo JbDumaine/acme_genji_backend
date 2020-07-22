@@ -16,13 +16,13 @@ class CreateCommandsTable extends Migration
         Schema::create('commands', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('command_number', 128)->nullable(false);
-            $table->timestamp('created_date')->useCurrent();
             $table->dateTime('delivery_date');
             $table->integer('state_id')->unsigned();
             $table->integer('store_id')->unsigned();
             $table->foreign('state_id')->references('id')->on('states')->onUpdate('NO ACTION')->onDelete('NO ACTION');
             $table->foreign('store_id')->references('id')->on('stores')->onUpdate('NO ACTION')->onDelete('NO ACTION');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

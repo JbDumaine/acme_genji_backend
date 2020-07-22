@@ -21,6 +21,7 @@ class CreateProductCommandsTable extends Migration
             $table->foreign('product_id')->references('id')->on('products')->onUpdate('NO ACTION')->onDelete('NO ACTION');
             $table->foreign('command_id')->references('id')->on('commands')->onUpdate('NO ACTION')->onDelete('NO ACTION');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
