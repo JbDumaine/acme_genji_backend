@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +12,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        Model::unguard(); // Disable mass assignment
+
+        $this->call(CategoriesTableSeeder::class);
+
+        Model::reguard(); // Enable mass assignment
     }
 }

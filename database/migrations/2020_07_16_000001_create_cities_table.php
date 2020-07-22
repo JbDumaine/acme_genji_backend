@@ -17,6 +17,7 @@ class CreateCitiesTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('name', 128)->nullable(false);
             $table->string('postal_code', 32)->nullable(false);
+            $table->timestamps();
         });
     }
 

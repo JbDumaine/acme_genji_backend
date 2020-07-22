@@ -20,7 +20,7 @@ class CreateProductCommandsTable extends Migration
             $table->integer('command_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products')->onUpdate('NO ACTION')->onDelete('NO ACTION');
             $table->foreign('command_id')->references('id')->on('commands')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-
+            $table->timestamps();
         });
     }
 

@@ -19,7 +19,7 @@ class CreateSuppliersTable extends Migration
             $table->string('address', 128)->nullable(true);
             $table->integer('city_id')->unsigned();
             $table->foreign('city_id')->references('id')->on('cities')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-
+            $table->timestamps();
         });
     }
 

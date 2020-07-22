@@ -21,7 +21,7 @@ class CreateStockReceptionsTable extends Migration
             $table->integer('store_id')->unsigned();
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onUpdate('NO ACTION')->onDelete('NO ACTION');
             $table->foreign('store_id')->references('id')->on('stores')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-            
+            $table->timestamps();
         });
     }
 

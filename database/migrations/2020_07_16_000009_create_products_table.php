@@ -25,7 +25,7 @@ class CreateProductsTable extends Migration
             $table->integer('supplier_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories')->onUpdate('NO ACTION')->onDelete('NO ACTION');
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-
+            $table->timestamps();
         });
     }
 

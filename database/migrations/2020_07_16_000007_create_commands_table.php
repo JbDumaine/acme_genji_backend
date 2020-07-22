@@ -22,7 +22,7 @@ class CreateCommandsTable extends Migration
             $table->integer('store_id')->unsigned();
             $table->foreign('state_id')->references('id')->on('states')->onUpdate('NO ACTION')->onDelete('NO ACTION');
             $table->foreign('store_id')->references('id')->on('stores')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-
+            $table->timestamps();
         });
     }
 
