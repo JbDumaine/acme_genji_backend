@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
 {
-    
+
     use SoftDeletes;
 
     protected $table = 'categories';
@@ -15,4 +15,11 @@ class Category extends Model
     protected $fillable = ['name', 'description'];
 
     protected $guarded = [];
+
+    // Method allowing to recover products by category.
+    public function products()
+    {
+        return $this->hasMany('App\Models\Product');
+    }
+
 }

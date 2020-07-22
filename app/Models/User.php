@@ -41,6 +41,6 @@ class User extends Authenticatable
     // Method allowing to recover store of user.
     public function getStore()
     {
-        return $this->belongsTo('\App\Models\Store', 'store_id', 'id');
+        return $this->belongsTo('\App\Models\Store');
     }
 }

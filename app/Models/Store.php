@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Store extends Model
 {
-    
+
     use SoftDeletes;
 
     protected $fillable = ['name', 'address'];
@@ -15,8 +15,20 @@ class Store extends Model
     protected $guarded = ['city_id'];
 
     // Method allowing to recover city of store.
-    public function getCity()
+    public function city()
     {
-        return $this->belongsTo('\App\Models\City', 'city_id', 'id');
+        return $this->belongsTo('\App\Models\City');
+    }
+
+    // Method allowing to recover users by store.
+    public function users()
+    {
+        return $this->hasMany('App\Models\User');
+    }
+
+    // Method allowing to recover commands by store.
+    public function commands()
+    {
+        return $this->hasMany('App\Models\Command');
     }
 }

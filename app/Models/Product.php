@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-    
+
     use SoftDeletes;
 
     protected $fillable = ['name', 'description', 'unit_price', 'unit_weight', 'stock_quantity', 'category_id'];
@@ -15,14 +15,26 @@ class Product extends Model
     protected $guarded = ['supplier_id'];
 
     // Method allowing to recover category of product.
-    public function getCategory()
+    public function category()
     {
-        return $this->belongsTo('\App\Models\Category', 'category_id', 'id');
+        return $this->belongsTo('\App\Models\Category');
     }
 
     // Method allowing to recover supplier of product.
-    public function getSupplier()
+    public function supplier()
     {
-        return $this->belongsTo('\App\Models\Supplier', 'supplier_id', 'id');
+        return $this->belongsTo('\App\Models\Supplier');
+    }
+
+    // Method allowing to recover commands of product.
+    public function commands()
+    {
+        return $this->belongsToMany('\App\Models\Command')->using('\App\Models\ProductCommand');
+    }
+
+    // Method allowing to recover stock's Reception of product.
+    public function stockReceptions()
+    {
+        return $this->belongsToMany('\App\Models\StockReception')->using('\App\Models\ProductStockReception');
     }
 }
