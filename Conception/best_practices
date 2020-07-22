@@ -1,0 +1,24 @@
+Bonne pratique :
+
+- Faire des commits régulier
+
+- Faire des Pull Request après chaque fonctionnalité terminée
+
+- Attente 24h avant de merge PR sauf demande de revues spécifiques
+
+- Faire attention au commande git si jamais un problème appeler Nary : 0650540958
+
+- Créer un branch pour chaque feature / fix :
+        -git flow feature start [nom_branche]
+        -git flow feature publish [nom_branche]
+        -créer la PR
+        -git flow feature finish [nom_branche] ou merge sur github
+        -puis push ou pull develop en fonction de l'endroit de la merge
+
+- Avant de faire un git add / git commit, faire un git status
+
+- Lien pour best practice sql : https://www.sqlstyle.guide/#:~:text=Names%20must%20begin%20with%20a,(first%20name%20becomes%20first_name%20).
+
+- Test commit feature
+
+Une fois par semaine : à partir de 18h30 le mercredi

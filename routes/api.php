@@ -19,13 +19,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/suppliers', 'SupplierController@getAll');
-Route::get('/supplier/{id}', 'SupplierController@get');
-Route::post('/supplier', 'SupplierController@create');
-Route::put('/supplier/{id}', 'SupplierController@update');
-Route::delete('/supplier/{id}','SupplierController@destroy');
+Route::get('/suppliers/{id}', 'SupplierController@get');
+Route::post('/suppliers', 'SupplierController@create');
+Route::put('/suppliers/{id}', 'SupplierController@update');
+Route::delete('/suppliers/{id}','SupplierController@destroy');
 
 Route::get('/products', 'ProductController@getAll');
-Route::get('/product/{id}', 'ProductController@get');
-Route::post('/product', 'ProductController@create');
-Route::put('/product/{id}', 'ProductController@update');
-Route::delete('/product/{id}','ProductController@destroy');
+Route::get('/products/{id}', 'ProductController@get');
+Route::post('/products', 'ProductController@create');
+Route::put('/products/{id}', 'ProductController@update');
+Route::delete('/products/{id}','ProductController@destroy');
