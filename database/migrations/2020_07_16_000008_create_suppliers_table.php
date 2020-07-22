@@ -15,10 +15,9 @@ class CreateSuppliersTable extends Migration
     {
         Schema::create('suppliers', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            $table->string('name',128)->nullable(false);
-            $table->string('address', 128)->nullable(true);
-            $table->integer('city_id')->unsigned();
-            $table->foreign('city_id')->references('id')->on('cities')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+            $table->string('name',128);
+            $table->string('address', 128);
+            $table->foreignId('city_id')->constrained();
 
         });
     }
@@ -31,9 +30,9 @@ class CreateSuppliersTable extends Migration
     public function down()
     {
         Schema::table('suppliers', function (Blueprint $table) {
-            $table->dropForeign('suppliers_city_id_foreign');    
+            $table->dropForeign('suppliers_city_id_foreign');
         });
-        
+
         Schema::dropIfExists('suppliers');
     }
 }

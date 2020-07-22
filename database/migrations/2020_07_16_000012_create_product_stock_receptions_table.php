@@ -16,11 +16,9 @@ class CreateProductStockReceptionsTable extends Migration
         Schema::create('product_stock_receptions', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->integer('product_quantity');
-            $table->integer('stock_reception_id')->unsigned();
-            $table->integer('product_id')->unsigned();
-            $table->foreign('stock_reception_id')->references('id')->on('stock_receptions')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-            $table->foreign('product_id')->references('id')->on('products')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-        
+            $table->foreignId('stock_reception_id')->constrained();
+            $table->foreignId('product_id')->constrained();
+
         });
     }
 
@@ -35,7 +33,7 @@ class CreateProductStockReceptionsTable extends Migration
             $table->dropForeign('product_stock_receptions_stock_reception_id_foreign');
             $table->dropForeign('product_stock_receptions_product_id_foreign');
         });
-        
+
         Schema::dropIfExists('product_stock_receptions');
     }
 }
