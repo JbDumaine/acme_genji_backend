@@ -14,9 +14,10 @@ class CreateSuppliersTable extends Migration
     public function up()
     {
         Schema::create('suppliers', function (Blueprint $table) {
-            $table->primary('id');
+            $table->increments('id')->unsigned();
             $table->string('name',128)->nullable(false);
             $table->string('address', 128)->nullable(true);
+            $table->integer('city_id')->unsigned();
             $table->foreign('city_id')->references('id')->on('cities')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 
         });

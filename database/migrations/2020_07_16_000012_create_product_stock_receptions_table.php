@@ -14,8 +14,10 @@ class CreateProductStockReceptionsTable extends Migration
     public function up()
     {
         Schema::create('product_stock_receptions', function (Blueprint $table) {
-            $table->primary('id');
+            $table->increments('id')->unsigned();
             $table->integer('product_quantity');
+            $table->integer('stock_reception_id')->unsigned();
+            $table->integer('product_id')->unsigned();
             $table->foreign('stock_reception_id')->references('id')->on('stock_receptions')->onUpdate('NO ACTION')->onDelete('NO ACTION');
             $table->foreign('product_id')->references('id')->on('products')->onUpdate('NO ACTION')->onDelete('NO ACTION');
         

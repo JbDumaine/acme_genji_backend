@@ -14,9 +14,11 @@ class CreateStockReceptionsTable extends Migration
     public function up()
     {
         Schema::create('stock_receptions', function (Blueprint $table) {
-            $table->primary('id');
+            $table->increments('id')->unsigned();
             $table->string('reception_number', 128);
             $table->dateTime('reception_date');
+            $table->integer('supplier_id')->unsigned();
+            $table->integer('store_id')->unsigned();
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onUpdate('NO ACTION')->onDelete('NO ACTION');
             $table->foreign('store_id')->references('id')->on('stores')->onUpdate('NO ACTION')->onDelete('NO ACTION');
             
