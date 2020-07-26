@@ -14,7 +14,7 @@ class ProductCommand extends Pivot
      */
     public $incrementing = true;
 
-    protected $table = 'products_commands';
+    protected $table = 'product_commands';
 
     protected $fillable = ['product_quantity'];
 

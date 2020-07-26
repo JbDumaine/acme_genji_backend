@@ -18,6 +18,8 @@ class CreateStoresTable extends Migration
             $table->string('name',128)->nullable(false);
             $table->string('address', 128)->nullable(false);
             $table->foreignId('city_id')->constrained();
+            $table->timestamps();
+            $table->softDeletes();
             });
     }
 
