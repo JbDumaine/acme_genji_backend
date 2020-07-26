@@ -15,8 +15,8 @@ class CreateStoresTable extends Migration
     {
         Schema::create('stores', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            $table->string('name',128);
-            $table->string('address', 128);
+            $table->string('name',128)->nullable(false);
+            $table->string('address', 128)->nullable(false);
             $table->foreignId('city_id')->constrained();
             });
     }

@@ -19,7 +19,8 @@ class CreateStockReceptionsTable extends Migration
             $table->dateTime('reception_date');
             $table->foreignId('supplier_id')->constrained();
             $table->foreignId('store_id')->constrained();
-
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -32,7 +33,6 @@ class CreateStockReceptionsTable extends Migration
     {
         Schema::table('stock_receptions', function (Blueprint $table) {
             $table->dropForeign('stock_receptions_supplier_id_foreign');
-            $table->dropForeign('stock_receptions_store_id_foreign');
         });
 
         Schema::dropIfExists('stock_receptions');

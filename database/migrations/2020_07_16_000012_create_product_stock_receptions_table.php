@@ -18,7 +18,8 @@ class CreateProductStockReceptionsTable extends Migration
             $table->integer('product_quantity');
             $table->foreignId('stock_reception_id')->constrained();
             $table->foreignId('product_id')->constrained();
-
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

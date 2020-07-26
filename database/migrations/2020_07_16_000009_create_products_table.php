@@ -23,7 +23,8 @@ class CreateProductsTable extends Migration
             $table->integer('stock_quantity');
             $table->foreignId('category_id')->constrained();
             $table->foreignId('supplier_id')->constrained();
-
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
