@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Database\Tools\Migrations\MigrationsTools;
+
 
 class CreateRolesTable extends Migration
 {
@@ -18,7 +20,24 @@ class CreateRolesTable extends Migration
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('name')->nullable(false);
+            $table->timestamps();
+            $table->softDeletes();
         });
+        $dataArray = [
+            [
+                "name" => "ROLE_USER",
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                "name" => "ROLE_ADMIN",
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ]
+        ];
+        foreach ($dataArray as $data) {
+            MigrationsTools::insertDataIntoDb('roles', $data);
+        }
     }
 
     /**

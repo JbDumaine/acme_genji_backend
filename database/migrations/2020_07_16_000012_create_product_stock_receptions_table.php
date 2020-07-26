@@ -20,7 +20,8 @@ class CreateProductStockReceptionsTable extends Migration
             $table->integer('product_id')->unsigned();
             $table->foreign('stock_reception_id')->references('id')->on('stock_receptions')->onUpdate('NO ACTION')->onDelete('NO ACTION');
             $table->foreign('product_id')->references('id')->on('products')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-        
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
