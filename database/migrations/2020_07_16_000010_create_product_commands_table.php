@@ -16,10 +16,8 @@ class CreateProductCommandsTable extends Migration
         Schema::create('product_commands', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->integer('product_quantity');
-            $table->integer('product_id')->unsigned();
-            $table->integer('command_id')->unsigned();
-            $table->foreign('product_id')->references('id')->on('products')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-            $table->foreign('command_id')->references('id')->on('commands')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+            $table->foreignId('product_id')->constrained();
+            $table->foreignId('command_id')->constrained();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -34,9 +32,9 @@ class CreateProductCommandsTable extends Migration
     {
         Schema::table('product_commands', function (Blueprint $table) {
             $table->dropForeign('product_commands_product_id_foreign');
-            $table->dropForeign('product_commands_command_id_foreign'); 
+            $table->dropForeign('product_commands_command_id_foreign');
         });
-        
+
         Schema::dropIfExists('product_commands');
     }
 }

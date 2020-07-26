@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class StockReception extends Model
 {
-    
+
     use SoftDeletes;
 
     protected $table = 'stock_receptions';
@@ -16,15 +16,15 @@ class StockReception extends Model
 
     protected $guarded = ['supplier_id', 'store_id'];
 
-    // Method allowing to recover supplier of stock reception.
-    public function getSupplier()
+    // Method allowing to recover supplier of stock's reception.
+    public function supplier()
     {
-        return $this->belongsTo('\App\Models\Supplier', 'supplier_id', 'id');
+        return $this->belongsTo('\App\Models\Supplier');
     }
 
-    // Method allowing to recover store of stock reception.
-    public function getStore()
+    // Method allowing to recover products of stock's reception.
+    public function products()
     {
-        return $this->belongsTo('\App\Models\Store', 'store_id', 'id');
+        return $this->belongsToMany('\App\Models\Product')->using('\App\Models\ProductStockReception');
     }
 }

@@ -2,29 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class ProductStockReception extends Model
+class ProductStockReception extends Pivot
 {
-    
-    use SoftDeletes;
+
+    /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = true;
 
     protected $table = 'product_stock_receptions';
 
     protected $fillable = ['product_quantity'];
 
-    protected $guarded = [];
-
-    // Method allowing to recover stock reception of product stock reception.
-    public function getStockReception()
-    {
-        return $this->belongsTo('\App\Models\StockReception', 'stock_reception_id', 'id');
-    }
-
-    // Method allowing to recover product of product stock reception.
-    public function getProduct()
-    {
-        return $this->belongsTo('\App\Models\Product', 'product_id', 'id');
-    }
+    protected $guarded = ['stock_reception_id', 'product_id'];
 }

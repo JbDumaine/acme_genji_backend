@@ -17,11 +17,8 @@ class CreateStoresTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('name',128)->nullable(false);
             $table->string('address', 128)->nullable(false);
-            $table->integer('city_id')->unsigned();
-            $table->foreign('city_id')->references('id')->on('cities')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-            $table->timestamps();
-            $table->softDeletes();
-        });
+            $table->foreignId('city_id')->constrained();
+            });
     }
 
     /**
@@ -35,7 +32,7 @@ class CreateStoresTable extends Migration
             $table->dropForeign('stores_city_id_foreign');
 
         });
-        
+
         Schema::dropIfExists('stores');
     }
 }

@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'last_name', 'email', 'password',
     ];
 
     /**
@@ -41,6 +41,6 @@ class User extends Authenticatable
     // Method allowing to recover store of user.
     public function getStore()
     {
-        return $this->belongsTo('\App\Models\Store', 'store_id', 'id');
+        return $this->belongsTo('\App\Models\Store');
     }
 }

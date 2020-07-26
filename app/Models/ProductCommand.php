@@ -2,29 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class ProductCommand extends Model
+class ProductCommand extends Pivot
 {
-    
-    use SoftDeletes;
 
-    protected $table = 'product_commands';
+    /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = true;
+
+    protected $table = 'products_commands';
 
     protected $fillable = ['product_quantity'];
 
     protected $guarded = ['command_id', 'product_id'];
-
-    // Method allowing to recover command of product command.
-    public function getCommand()
-    {
-        return $this->belongsTo('\App\Models\Command', 'command_id', 'id');
-    }
-
-    // Method allowing to recover product of product command.
-    public function getProduct()
-    {
-        return $this->belongsTo('\App\Models\Product', 'product_id', 'id');
-    }
 }
