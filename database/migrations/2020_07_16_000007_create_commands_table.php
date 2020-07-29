@@ -16,7 +16,7 @@ class CreateCommandsTable extends Migration
         Schema::create('commands', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
             $table->string('command_number', 128);
-            $table->timestamp('created_at')->useCurrent();
+            $table->timestamps();
             $table->dateTime('delivery_date')->nullable();
             $table->foreignId('state_id')->constrained();
             $table->foreignId('store_id')->constrained();
