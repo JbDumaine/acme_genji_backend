@@ -18,7 +18,8 @@ class CreateProductCommandsTable extends Migration
             $table->integer('product_quantity');
             $table->foreignId('product_id')->constrained();
             $table->foreignId('command_id')->constrained();
-
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
