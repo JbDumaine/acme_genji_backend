@@ -14,7 +14,7 @@ class CreateProductCommandsTable extends Migration
     public function up()
     {
         Schema::create('product_commands', function (Blueprint $table) {
-            $table->increments('id')->unsigned();
+            $table->bigIncrements('id')->unsigned();
             $table->integer('product_quantity');
             $table->foreignId('product_id')->constrained();
             $table->foreignId('command_id')->constrained();

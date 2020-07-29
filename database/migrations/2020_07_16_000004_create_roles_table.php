@@ -10,7 +10,7 @@ class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
-     * 
+     *
      * Creation of role table for the permissions.
      *
      * @return void
@@ -18,7 +18,7 @@ class CreateRolesTable extends Migration
     public function up()
     {
         Schema::create('roles', function (Blueprint $table) {
-            $table->increments('id')->unsigned();
+            $table->bigIncrements('id')->unsigned();
             $table->string('name')->nullable(false);
             $table->timestamps();
             $table->softDeletes();

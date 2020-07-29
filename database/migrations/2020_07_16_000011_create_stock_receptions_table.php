@@ -14,7 +14,7 @@ class CreateStockReceptionsTable extends Migration
     public function up()
     {
         Schema::create('stock_receptions', function (Blueprint $table) {
-            $table->increments('id')->unsigned();
+            $table->bigIncrements('id')->unsigned();
             $table->string('reception_number', 128);
             $table->dateTime('reception_date');
             $table->foreignId('supplier_id')->constrained();
