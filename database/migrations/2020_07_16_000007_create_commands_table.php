@@ -14,10 +14,10 @@ class CreateCommandsTable extends Migration
     public function up()
     {
         Schema::create('commands', function (Blueprint $table) {
-            $table->increments('id')->unsigned();
+            $table->bigIncrements('id')->unsigned();
             $table->string('command_number', 128);
             $table->timestamp('created_at')->useCurrent();
-            $table->dateTime('delivery_date');
+            $table->dateTime('delivery_date')->nullable();
             $table->foreignId('state_id')->constrained();
             $table->foreignId('store_id')->constrained();
 

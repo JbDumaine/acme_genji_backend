@@ -14,7 +14,7 @@ class CreateProductStockReceptionsTable extends Migration
     public function up()
     {
         Schema::create('product_stock_receptions', function (Blueprint $table) {
-            $table->increments('id')->unsigned();
+            $table->bigIncrements('id')->unsigned();
             $table->integer('product_quantity');
             $table->foreignId('stock_reception_id')->constrained();
             $table->foreignId('product_id')->constrained();
