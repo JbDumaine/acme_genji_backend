@@ -16,7 +16,7 @@ class ProductStockReceptionController extends Controller
     public function getAll()
     {
         $productStockReceptions = ProductStockReception::all();
-        return response()->json($productStockReceptions);
+        return response()->json($productStockReceptions, 200);
     }
 
     /**
@@ -31,7 +31,7 @@ class ProductStockReceptionController extends Controller
         if (!$productStockReception->save()) {
             return response()->json("New Product_Stock_Reception not saved!", 500);
         }
-        return response()->json("New Product_Stock_Reception Saved!", 200);
+        return response()->json($productStockReception, 200);
     }
 
     /**
@@ -42,8 +42,11 @@ class ProductStockReceptionController extends Controller
      */
     public function get(int $id)
     {
-        $productStockReception= ProductStockReception::find($id);
-        return response()->json($productStockReception);
+        $productStockReception = ProductStockReception::find($id);
+        if ($productStockReception) {
+            return response()->json($productStockReception, 200);
+        }
+        return response()->json(["result" => null, "message" => "No result"], 404);
     }
 
     /**
@@ -58,7 +61,7 @@ class ProductStockReceptionController extends Controller
         $productStockReceptionStockReception = ProductStockReception::find($id);
         $productStockReceptionStockReception->product_quantity = $request->product_quantity;
         $productStockReceptionStockReception->stock_reception_id = $request->stock_reception_id;
-        $productStockReceptionStockReception->product_id= $request->product_id;
+        $productStockReceptionStockReception->product_id = $request->product_id;
 
         if ($productStockReceptionStockReception->save()) {
             return response()->json($productStockReceptionStockReception, 200);
@@ -75,9 +78,9 @@ class ProductStockReceptionController extends Controller
     public function destroy(int $id)
     {
         $productStockReception = ProductStockReception::find($id);
-        if($productStockReception->delete()){
-            return response()->json("Product_Stock_Reception id ".$id." removed", 200);
+        if ($productStockReception->delete()) {
+            return response()->json("Product_Stock_Reception id " . $id . " removed", 204);
         }
-        return response()->json("Product_Stock_Reception id ".$id." not removed. An error occurred", 500);
+        return response()->json("Product_Stock_Reception id " . $id . " not removed. An error occurred", 500);
     }
 }

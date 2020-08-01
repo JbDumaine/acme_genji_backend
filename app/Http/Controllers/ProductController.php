@@ -30,9 +30,9 @@ class ProductController extends Controller
     {
         $product = new Product($request->json()->all());
         if (!$product->save()) {
-            return response()->json("New supplier not saved!", 500);
+            return response()->json("New Product not saved!", 500);
         }
-        return response()->json("New Supplier Saved!", 200);
+        return response()->json($product, 200);
     }
 
     /**
@@ -43,8 +43,11 @@ class ProductController extends Controller
      */
     public function get(int $id)
     {
-        $product= Product::find($id);
-        return response()->json($product);
+        $product = Product::find($id);
+        if ($product) {
+            return response()->json($product, 200);
+        }
+        return response()->json(["result" => null, "message" => "No result"], 404);
     }
 
     /**
@@ -73,10 +76,10 @@ class ProductController extends Controller
      */
     public function destroy(int $id)
     {
-        $supplier = Product::find($id);
-        if($supplier->delete()){
-            return response()->json("Supplier id ".$id." removed", 200);
+        $product = Product::find($id);
+        if ($product->delete()) {
+            return response()->json("Product id " . $id . " removed", 204);
         }
-        return response()->json("Supplier id ".$id." not removed. An error occurred", 500);
+        return response()->json("Product id " . $id . " not removed. An error occurred", 500);
     }
 }
