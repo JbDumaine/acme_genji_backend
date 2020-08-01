@@ -1,9 +1,9 @@
 <?php
 
+use Database\Migrations\Tools\MigrationsTools;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Database\Tools\Migrations\MigrationsTools;
 
 class CreateStatesTable extends Migration
 {

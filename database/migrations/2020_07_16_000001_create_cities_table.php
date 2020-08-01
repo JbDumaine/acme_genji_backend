@@ -1,10 +1,10 @@
 <?php
 
+use Database\Migrations\Tools\MigrationsTools;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Http;
-use Database\Tools\Migrations\MigrationsTools;
 
 class CreateCitiesTable extends Migration
 {
