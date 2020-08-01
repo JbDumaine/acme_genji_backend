@@ -10,9 +10,8 @@ class Store extends Model
 
     use SoftDeletes;
 
-    protected $fillable = ['name', 'address'];
+    protected $fillable = ['name', 'address','city_id'];
 
-    protected $guarded = ['city_id'];
 
     // Method allowing to recover city of store.
     public function city()
