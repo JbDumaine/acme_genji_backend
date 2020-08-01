@@ -14,7 +14,6 @@ class City extends Model
 
     protected $fillable = ['name', 'postal_code'];
 
-    protected $guarded = [];
 
     // Method allowing to recover stores by city.
     public function stores()

@@ -17,7 +17,6 @@ class ProductStockReception extends Pivot
 
     protected $table = 'product_stock_receptions';
 
-    protected $fillable = ['product_quantity', "stock_reception_id", "product_id"];
+    protected $fillable = ['product_quantity', "stock_reception_id", "product_id",'stock_reception_id', 'product_id'];
 
-    protected $guarded = ['stock_reception_id', 'product_id'];
 }

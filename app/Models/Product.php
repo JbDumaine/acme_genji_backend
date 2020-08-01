@@ -10,9 +10,7 @@ class Product extends Model
 
     use SoftDeletes;
 
-    protected $fillable = ['name', 'description', 'unit_price', 'unit_weight', 'stock_quantity'];
-
-    protected $guarded = ['supplier_id', 'category_id'];
+    protected $fillable = ['name', 'description', 'unit_price', 'unit_weight', 'stock_quantity','supplier_id', 'category_id'];
 
     // Method allowing to recover category of product.
     public function category()
