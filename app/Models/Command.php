@@ -10,9 +10,8 @@ class Command extends Model
 
     use SoftDeletes;
 
-    protected $fillable = ['command_number', 'delivery_date'];
+    protected $fillable = ['command_number', 'delivery_date','store_id', 'state_id'];
 
-    protected $guarded = ['store_id', 'state_id'];
 
     // Method allowing to recover state of command.
     public function state()

@@ -12,7 +12,6 @@ class State extends Model
 
     protected $fillable = ['name'];
 
-    protected $guarded = [];
 
     // Method allowing to recover commands by state.
     public function commands()

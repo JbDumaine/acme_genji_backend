@@ -10,9 +10,8 @@ class Supplier extends Model
 
     use SoftDeletes;
 
-    protected $fillable = ['name', 'adress'];
+    protected $fillable = ['name', 'adress','city_id'];
 
-    protected $guarded = ['city_id'];
 
     // Method allowing to recover city of supplier.
     public function city()

@@ -14,8 +14,6 @@ class Category extends Model
 
     protected $fillable = ['name', 'description'];
 
-    protected $guarded = [];
-
     // Method allowing to recover products by category.
     public function products()
     {

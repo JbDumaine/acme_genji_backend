@@ -17,7 +17,6 @@ class ProductCommand extends Pivot
 
     protected $table = 'product_commands';
 
-    protected $fillable = ['product_quantity'];
+    protected $fillable = ['product_quantity','command_id', 'product_id'];
 
-    protected $guarded = ['command_id', 'product_id'];
 }
