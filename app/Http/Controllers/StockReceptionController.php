@@ -31,7 +31,7 @@ class StockReceptionController extends Controller
         if (!$stockReception->save()) {
             return response()->json("New Stock_Reception not saved!", 500);
         }
-        return response()->json("New Stock_Reception Saved!", 200);
+        return response()->json($stockReception, 200);
     }
 
     /**
@@ -42,8 +42,11 @@ class StockReceptionController extends Controller
      */
     public function get(int $id)
     {
-        $stockReception= StockReception::find($id);
-        return response()->json($stockReception);
+        $stockReception = StockReception::find($id);
+        if ($stockReception) {
+            return response()->json($stockReception,200);
+        }
+        return response()->json(["result" => null, "message" => "No result"], 404);
     }
 
     /**
@@ -76,9 +79,9 @@ class StockReceptionController extends Controller
     public function destroy(int $id)
     {
         $stockReception = StockReception::find($id);
-        if($stockReception->delete()){
-            return response()->json("Stock_Reception id ".$id." removed", 200);
+        if ($stockReception->delete()) {
+            return response()->json("Stock_Reception id " . $id . " removed", 204);
         }
-        return response()->json("Stock_Reception id ".$id." not removed. An error occurred", 500);
+        return response()->json("Stock_Reception id " . $id . " not removed. An error occurred", 500);
     }
 }

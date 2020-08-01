@@ -30,7 +30,7 @@ class SupplierController extends Controller
         if (!$supplier->save()) {
             return response()->json("New supplier not saved!", 500);
         }
-        return response()->json("New Supplier Saved!", 200);
+        return response()->json($supplier, 200);
     }
 
 
@@ -44,7 +44,10 @@ class SupplierController extends Controller
     public function get($id)
     {
         $supplier = Supplier::find($id);
-        return response()->json($supplier);
+        if($supplier){
+            return response()->json($supplier,200);
+        }
+        return response()->json(["result" => null, "message" => "No result"], 404);
     }
 
 
@@ -76,7 +79,7 @@ class SupplierController extends Controller
     {
         $supplier = Supplier::find($id);
         if($supplier->delete()){
-            return response()->json("Supplier id ".$id." removed", 200);
+            return response()->json("Supplier id ".$id." removed", 204);
         }
         return response()->json("Supplier id ".$id." not removed. An error occurred", 500);
     }
