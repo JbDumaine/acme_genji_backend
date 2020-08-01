@@ -12,7 +12,7 @@ class StockReception extends Model
 
     protected $table = 'stock_receptions';
 
-    protected $fillable = ['reception_number', 'reception_date'];
+    protected $fillable = ['reception_number', 'reception_date','supplier_id', 'store_id'];
 
     protected $guarded = ['supplier_id', 'store_id'];
 
