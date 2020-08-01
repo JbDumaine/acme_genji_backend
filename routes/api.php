@@ -47,3 +47,11 @@ Route::get('/product_stock_receptions/{id}', 'ProductStockReceptionController@ge
 Route::post('/product_stock_receptions', 'ProductStockReceptionController@create');
 Route::put('/product_stock_receptions/{id}', 'ProductStockReceptionController@update');
 Route::delete('/product_stock_receptions/{id}','ProductStockReceptionController@destroy');
+
+
+//Categories routes
+Route::get('/categories', 'CategoryController@getAll');
+Route::get('/categories/{id}', 'CategoryController@get');
+Route::post('/categories', 'CategoryController@create');
+Route::put('/categories/{id}', 'CategoryController@update');
+Route::delete('/categories/{id}','CategoryController@destroy');
