@@ -32,22 +32,19 @@ Route::post('/products', 'ProductController@create');
 Route::put('/products/{id}', 'ProductController@update');
 Route::delete('/products/{id}','ProductController@destroy');
 
+//Categories routes
+Route::get('/categories', 'CategoryController@getAll');
+Route::get('/categories/{id}', 'CategoryController@get');
+Route::post('/categories', 'CategoryController@create');
+Route::put('/categories/{id}', 'CategoryController@update');
+Route::delete('/categories/{id}','CategoryController@destroy');
+
 //Stock Reception routes
 Route::get('/stock_receptions', 'StockReceptionController@getAll');
 Route::get('/stock_receptions/{id}', 'StockReceptionController@get');
 Route::post('/stock_receptions', 'StockReceptionController@create');
 Route::put('/stock_receptions/{id}', 'StockReceptionController@update');
 Route::delete('/stock_receptions/{id}','StockReceptionController@destroy');
-
-
-
-//Product Stock Reception routes
-Route::get('/product_stock_receptions', 'ProductStockReceptionController@getAll');
-Route::get('/product_stock_receptions/{id}', 'ProductStockReceptionController@get');
-Route::post('/product_stock_receptions', 'ProductStockReceptionController@create');
-Route::put('/product_stock_receptions/{id}', 'ProductStockReceptionController@update');
-Route::delete('/product_stock_receptions/{id}','ProductStockReceptionController@destroy');
-
 
 //Store routes
 Route::get('/stores', 'StoreController@getAll');
@@ -56,10 +53,9 @@ Route::post('/stores', 'StoreController@create');
 Route::put('/stores/{id}', 'StoreController@update');
 Route::delete('/stores/{id}','StoreController@destroy');
 
-//Categories routes
-Route::get('/categories', 'CategoryController@getAll');
-Route::get('/categories/{id}', 'CategoryController@get');
-Route::post('/categories', 'CategoryController@create');
-Route::put('/categories/{id}', 'CategoryController@update');
-Route::delete('/categories/{id}','CategoryController@destroy');
-
+//Product Stock Reception routes
+Route::get('/product_stock_receptions', 'ProductStockReceptionController@getAll');
+Route::get('/product_stock_receptions/{id}', 'ProductStockReceptionController@get');
+Route::post('/product_stock_receptions', 'ProductStockReceptionController@create');
+Route::put('/product_stock_receptions/{id}', 'ProductStockReceptionController@update');
+Route::delete('/product_stock_receptions/{id}','ProductStockReceptionController@destroy');
