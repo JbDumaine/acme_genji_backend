@@ -17,7 +17,8 @@ class CityController extends Controller
      */
     public function getAll()
     {
-        $cities = City::all();
+        $cities = City::orderBy('name', 'asc')
+            ->get();
         return response()->json($cities);
     }
 
@@ -46,8 +47,9 @@ class CityController extends Controller
     public function getByTerms(string $term)
     {
         $cities = DB::table('cities')
-            ->where('name', 'like', "%".$term."%")
-            ->orWhere('postal_code', 'like', $term."%")
+            ->where('name', 'like', $term . "%")
+            ->orWhere('postal_code', 'like', $term . "%")
+            ->orderBy('name', 'asc')
             ->get();
         if ($cities) {
             return response()->json($cities, 200);
