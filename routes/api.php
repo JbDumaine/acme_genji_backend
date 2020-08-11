@@ -66,3 +66,9 @@ Route::get('/commands/{id}', 'CommandController@get');
 Route::post('/commands', 'CommandController@create');
 Route::put('/commands/{id}', 'CommandController@update');
 Route::delete('/commands/{id}','CommandController@destroy');
+
+
+//City routes
+Route::get('/cities', 'CityController@getAll');
+Route::get('/cities/{id}', 'CityController@get');
+Route::get('/cities/search/{term}', 'CityController@getByTerms');
