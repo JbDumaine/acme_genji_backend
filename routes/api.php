@@ -59,3 +59,10 @@ Route::get('/product_stock_receptions/{id}', 'ProductStockReceptionController@ge
 Route::post('/product_stock_receptions', 'ProductStockReceptionController@create');
 Route::put('/product_stock_receptions/{id}', 'ProductStockReceptionController@update');
 Route::delete('/product_stock_receptions/{id}','ProductStockReceptionController@destroy');
+
+//Command routes
+Route::get('/commands', 'CommandController@getAll');
+Route::get('/commands/{id}', 'CommandController@get');
+Route::post('/commands', 'CommandController@create');
+Route::put('/commands/{id}', 'CommandController@update');
+Route::delete('/commands/{id}','CommandController@destroy');
