@@ -27,10 +27,14 @@ class StockReceptionController extends Controller
      */
     public function create(Request $request)
     {
+        $products = $request->json()->all()["products"];
         $stockReception = new StockReception($request->json()->all());
         if (!$stockReception->save()) {
             return response()->json("New Stock_Reception not saved!", 500);
         }
+        $stockReception->saveProductsStockReception($stockReception->id,$products);
+        $stockReception->products;
+        $stockReception->supplier;
         return response()->json($stockReception, 200);
     }
 
@@ -62,7 +66,6 @@ class StockReceptionController extends Controller
         $stockReception->reception_number = $request->reception_number;
         $stockReception->reception_date = $request->reception_date;
         $stockReception->supplier_id = $request->supplier_id;
-
         if ($stockReception->save()) {
             return response()->json($stockReception, 200);
         }
