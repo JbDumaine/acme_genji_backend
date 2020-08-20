@@ -15,8 +15,7 @@ class SupplierController extends Controller
      */
     public function getAll()
     {
-
-        $suppliers = Supplier::all();
+        $suppliers = Supplier::with(['city', 'products', 'stockReceptions'])->get();
         return response()->json($suppliers);
     }
 

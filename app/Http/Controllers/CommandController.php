@@ -30,7 +30,7 @@ class CommandController extends Controller
      */
     public function getAll()
     {
-        $commands = Command::all();
+        $commands = Command::with(['state', 'store', 'products'])->get();
         return response()->json($commands);
     }
 
@@ -42,28 +42,14 @@ class CommandController extends Controller
      */
     public function create(Request $request)
     {
-        $command = new Command();
-        $command->command_number = $request->command_number;
-        $command->delivery_date = $request->delivery_date;
-        $command->store_id = $request->store_id;
-        $command->state_id = $request->state_id;
+        $command = new Command($request->json()->all());
         if (!$command->save()) {
             return response()->json("New command not saved!", 500);
         }
-        foreach ($request->products as $product) {
-            $productCommand = new ProductCommand();
-            $productCommand->product_quantity = $product['quantity'];
-            $productCommand->command_id = $command->id;
-            $productCommand->product_id = $product['id'];
-            $baseProduct = Product::find($product['id']);
-            $baseProduct->stock_quantity -= $product['quantity'];
-            if (!$productCommand->save()) {
-                return response()->json("Product Command not updated", 500);
-            }
-            if (!$baseProduct->save()) {
-                return response()->json("Product " . $product['id'] . " not updated", 500);
-            }
-        }
+        $products = $request->json()->all()["products"];
+        $command->saveProductsCommand($command->id, $products);
+        $command->products;
+        $command->store;
 
         return response()->json($command, 200);
     }

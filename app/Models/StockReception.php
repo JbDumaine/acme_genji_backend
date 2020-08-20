@@ -27,6 +27,7 @@ class StockReception extends Model
     {
         return $this->belongsToMany('\App\Models\Product', 'product_stock_receptions');
     }
+  
     public function saveProductsStockReception($id, $productsStockArray)
     {
         foreach ($productsStockArray as $productStock) {

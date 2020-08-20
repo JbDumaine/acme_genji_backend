@@ -15,7 +15,7 @@ class StockReceptionController extends Controller
      */
     public function getAll()
     {
-        $stockReception = StockReception::all();
+        $stockReception = StockReception::with(['supplier', 'products'])->get();
         return response()->json($stockReception);
     }
 
