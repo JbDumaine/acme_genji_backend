@@ -13,12 +13,12 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    private ProductRepository $productRepository;
-    private CommandRepository $commandRepository;
-    private StockReceptionRepository $receptionRepository;
-    private SupplierRepository $supplierRepository;
-    private CategoryRepository $categoryRepository;
-    private UserRepository $userRepository;
+    private $productRepository;
+    private $commandRepository;
+    private $receptionRepository;
+    private $supplierRepository;
+    private $categoryRepository;
+    private $userRepository;
 
     /**
      * Create a new controller instance.
