@@ -67,8 +67,14 @@ Route::post('/commands', 'CommandController@create');
 Route::put('/commands/{id}', 'CommandController@update');
 Route::delete('/commands/{id}','CommandController@destroy');
 
-
 //City routes
 Route::get('/cities', 'CityController@getAll');
 Route::get('/cities/{id}', 'CityController@get');
 Route::get('/cities/search/{term}', 'CityController@getByTerms');
+
+//Product Command routes
+Route::get('/product_commands', 'ProductCommandController@getAll');
+Route::get('/product_commands/{id}', 'ProductCommandController@get');
+Route::post('/product_commands', 'ProductCommandController@create');
+Route::put('/product_commands/{id}', 'ProductCommandController@update');
+Route::delete('/product_commands/{id}','ProductCommandController@destroy');
