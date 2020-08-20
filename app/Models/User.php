@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
+
+    use HasApiTokens, Notifiable;
+
     // Check to use HasRole (use Spatie\Permission\Traits\HasRoles)
     use Notifiable;
     use SoftDeletes;
@@ -27,7 +30,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token','role_id','store_id'
+        'password', 'remember_token','role_id' => 1,'store_id'
     ];
 
     /**
