@@ -44,6 +44,7 @@ class SupplierController extends Controller
     public function get($id)
     {
         $supplier = Supplier::find($id);
+        $supplier->city;
         if($supplier){
             return response()->json($supplier,200);
         }
