@@ -18,7 +18,6 @@ class CreateStockReceptionsTable extends Migration
             $table->string('reception_number', 128);
             $table->dateTime('reception_date');
             $table->foreignId('supplier_id')->constrained();
-            $table->foreignId('store_id')->constrained();
             $table->timestamps();
             $table->softDeletes();
         });

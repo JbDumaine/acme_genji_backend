@@ -62,7 +62,6 @@ class StockReceptionController extends Controller
         $stockReception->reception_number = $request->reception_number;
         $stockReception->reception_date = $request->reception_date;
         $stockReception->supplier_id = $request->supplier_id;
-        $stockReception->store_id = $request->store_id;
 
         if ($stockReception->save()) {
             return response()->json($stockReception, 200);
