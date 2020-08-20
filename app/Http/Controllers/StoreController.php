@@ -15,7 +15,7 @@ class StoreController extends Controller
      */
     public function getAll()
     {
-        $stores = Store::all();
+        $stores = Store::with(['city', 'users', 'commands'])->get();
         return response()->json($stores);
     }
 

@@ -28,6 +28,23 @@ class Command extends Model
     // Method allowing to recover products of command.
     public function products()
     {
-        return $this->belongsToMany('\App\Models\Product')->using('\App\Models\ProductCommand');
+        return $this->belongsToMany('\App\Models\Product', 'product_commands');
+    }
+
+    public function saveProductsCommand($id, $productsStockArray)
+    {
+        foreach ($productsStockArray as $productStock) {
+            $productCommand = new ProductCommand($productStock);
+            $productCommand->command_id = $id;
+            if (!$productCommand->save()) {
+                return null;
+            }
+            $product = Product::find($productStock['product_id']);
+            $product->stock_quantity -= $productCommand->product_quantity;
+            if (!$product->save()) {
+                return null;
+            }
+        }
+        return true;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Command;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Supplier;
@@ -17,7 +18,7 @@ class ProductController extends Controller
      */
     public function getAll()
     {
-        $products = Product::all();
+        $products = Product::with(['category', 'supplier'])->get();
         return response()->json($products);
     }
 
