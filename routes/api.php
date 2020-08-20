@@ -58,6 +58,18 @@ Route::group([
     Route::put('/stores/{id}', 'StoreController@update');
     Route::delete('/stores/{id}', 'StoreController@destroy');
 
+    //Command routes
+    Route::get('/commands', 'CommandController@getAll');
+    Route::get('/commands/{id}', 'CommandController@get');
+    Route::post('/commands', 'CommandController@create');
+    Route::put('/commands/{id}', 'CommandController@update');
+    Route::delete('/commands/{id}', 'CommandController@destroy');
+
+    //City routes
+    Route::get('/cities', 'CityController@getAll');
+    Route::get('/cities/{id}', 'CityController@get');
+    Route::get('/cities/search/{term}', 'CityController@getByTerms');  
+  
     //Product Stock Reception routes
     Route::get('/product_stock_receptions', 'ProductStockReceptionController@getAll');
     Route::get('/product_stock_receptions/{id}', 'ProductStockReceptionController@get');
@@ -65,16 +77,13 @@ Route::group([
     Route::put('/product_stock_receptions/{id}', 'ProductStockReceptionController@update');
     Route::delete('/product_stock_receptions/{id}', 'ProductStockReceptionController@destroy');
 
-    //Command routes
-    Route::get('/commands', 'CommandController@getAll');
-    Route::get('/commands/{id}', 'CommandController@get');
-    Route::post('/commands', 'CommandController@create');
-    Route::put('/commands/{id}', 'CommandController@update');
-    Route::delete('/commands/{id}', 'CommandController@destroy');
+    //Product Command routes
+    Route::get('/product_commands', 'ProductCommandController@getAll');
+    Route::get('/product_commands/{id}', 'ProductCommandController@get');
+    Route::post('/product_commands', 'ProductCommandController@create');
+    Route::put('/product_commands/{id}', 'ProductCommandController@update');
+    Route::delete('/product_commands/{id}','ProductCommandController@destroy');
 });
-
-
-
 
 //Auth routes
 Route::post('/register', 'Api\AuthController@register');
