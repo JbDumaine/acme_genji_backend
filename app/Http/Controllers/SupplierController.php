@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\Supplier;
 
@@ -10,11 +11,11 @@ class SupplierController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function getAll()
     {
-        
+
         $suppliers = Supplier::all();
         return response()->json($suppliers);
     }
@@ -22,7 +23,7 @@ class SupplierController extends Controller
     /**
      * Create a new supplier.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function create(Request $request)
     {
@@ -39,7 +40,7 @@ class SupplierController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function get($id)
     {
@@ -54,9 +55,9 @@ class SupplierController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function update(Request $request, $id)
     {
@@ -73,7 +74,7 @@ class SupplierController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function destroy($id)
     {

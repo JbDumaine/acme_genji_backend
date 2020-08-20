@@ -23,6 +23,9 @@ Route::group([
     'middleware' => 'auth:api'
 
 ], function () {
+    //Home routes
+    Route::get('/', 'HomeController');
+
     //Suppliers routes
     Route::get('/suppliers', 'SupplierController@getAll');
     Route::get('/suppliers/{id}', 'SupplierController@get');
@@ -69,8 +72,8 @@ Route::group([
     //City routes
     Route::get('/cities', 'CityController@getAll');
     Route::get('/cities/{id}', 'CityController@get');
-    Route::get('/cities/search/{term}', 'CityController@getByTerms');  
-  
+    Route::get('/cities/search/{term}', 'CityController@getByTerms');
+
     //Product Stock Reception routes
     Route::get('/product_stock_receptions', 'ProductStockReceptionController@getAll');
     Route::get('/product_stock_receptions/{id}', 'ProductStockReceptionController@get');
