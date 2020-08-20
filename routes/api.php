@@ -68,6 +68,7 @@ Route::group([
     Route::post('/commands', 'CommandController@create');
     Route::put('/commands/{id}', 'CommandController@update');
     Route::delete('/commands/{id}', 'CommandController@destroy');
+    Route::post('/commands/change_state/{id}', 'CommandController@changeState');
 
     //City routes
     Route::get('/cities', 'CityController@getAll');

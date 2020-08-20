@@ -104,4 +104,27 @@ class CommandController extends Controller
         }
         return response()->json("Command id " . $id . " not removed. An error occurred", 500);
     }
+
+    /**
+     * Change state command
+     *
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function changeState(int $id)
+    {
+        $command = Command::find($id);
+
+        if (1 === $command->state_id) {
+            $command->state_id = 2;
+        }elseif (2 === $command->state_id) {
+            $command->state_id = 1;
+        }
+
+        if (!$command->save()) {
+            return response()->json("Command state not changed!", 500);
+        }
+
+        return response()->json("Command id " . $id . " state change", 200);
+    }
 }
