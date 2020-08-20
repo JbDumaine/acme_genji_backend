@@ -29,6 +29,7 @@ Route::group([
     Route::post('/suppliers', 'SupplierController@create');
     Route::put('/suppliers/{id}', 'SupplierController@update');
     Route::delete('/suppliers/{id}', 'SupplierController@destroy');
+    Route::get('/supplierscount', 'SupplierController@count');
 
     //Products routes
     Route::get('/products', 'ProductController@getAll');
@@ -36,6 +37,7 @@ Route::group([
     Route::post('/products', 'ProductController@create');
     Route::put('/products/{id}', 'ProductController@update');
     Route::delete('/products/{id}', 'ProductController@destroy');
+    Route::get('/productscount', 'ProductController@count');
 
     //Categories routes
     Route::get('/categories', 'CategoryController@getAll');
@@ -43,6 +45,7 @@ Route::group([
     Route::post('/categories', 'CategoryController@create');
     Route::put('/categories/{id}', 'CategoryController@update');
     Route::delete('/categories/{id}', 'CategoryController@destroy');
+    Route::get('/categoriescount', 'CategoryController@count');
 
     //Stock Reception routes
     Route::get('/stock_receptions', 'StockReceptionController@getAll');
@@ -64,12 +67,13 @@ Route::group([
     Route::post('/commands', 'CommandController@create');
     Route::put('/commands/{id}', 'CommandController@update');
     Route::delete('/commands/{id}', 'CommandController@destroy');
+    Route::get('/commandscount', 'CommandController@count');
 
     //City routes
     Route::get('/cities', 'CityController@getAll');
     Route::get('/cities/{id}', 'CityController@get');
-    Route::get('/cities/search/{term}', 'CityController@getByTerms');  
-  
+    Route::get('/cities/search/{term}', 'CityController@getByTerms');
+
     //Product Stock Reception routes
     Route::get('/product_stock_receptions', 'ProductStockReceptionController@getAll');
     Route::get('/product_stock_receptions/{id}', 'ProductStockReceptionController@get');

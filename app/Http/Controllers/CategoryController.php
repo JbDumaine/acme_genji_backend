@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -82,5 +83,19 @@ class CategoryController extends Controller
             return response()->json("Category id " . $id . " removed", 204);
         }
         return response()->json("Category id " . $id . " not removed. An error occurred", 500);
+    }
+
+    /**
+     * Count number of category.
+     *
+     * @return JsonResponse
+     */
+    public function count()
+    {
+        $categories = DB::table('categories')->count();
+        if (!$categories) {
+            return response()->json("No category in DataBase", 204);
+        }
+        return response()->json($categories, 200);
     }
 }

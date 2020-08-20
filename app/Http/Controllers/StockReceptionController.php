@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\StockReception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StockReceptionController extends Controller
 {
@@ -84,4 +85,19 @@ class StockReceptionController extends Controller
         }
         return response()->json("Stock_Reception id " . $id . " not removed. An error occurred", 500);
     }
+
+    /**
+     * Count number of stock reception.
+     *
+     * @return JsonResponse
+     */
+    public function count()
+    {
+        $stockReceptions = DB::table('stock_receptions')->count();
+        if (!$stockReceptions) {
+            return response()->json("No stock receptions in DataBase", 204);
+        }
+        return response()->json($stockReceptions, 200);
+    }
+
 }

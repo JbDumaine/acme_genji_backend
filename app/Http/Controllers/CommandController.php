@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Command;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CommandController extends Controller
 {
@@ -83,5 +84,19 @@ class CommandController extends Controller
             return response()->json(204);
         }
         return response()->json("Command id " . $id . " not removed. An error occurred", 500);
+    }
+
+    /**
+     * Count number of commands.
+     *
+     * @return JsonResponse
+     */
+    public function count()
+    {
+        $commands = DB::table('commands')->count();
+        if (!$commands) {
+            return response()->json("No command in DataBase", 204);
+        }
+        return response()->json($commands, 200);
     }
 }
