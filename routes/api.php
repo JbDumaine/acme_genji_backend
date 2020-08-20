@@ -32,6 +32,7 @@ Route::group([
 
     //Products routes
     Route::get('/products', 'ProductController@getAll');
+    Route::get('/products/group/{groupBy}', 'ProductController@getProductsGroupByCategoryOrSupplier');
     Route::get('/products/{id}', 'ProductController@get');
     Route::post('/products', 'ProductController@create');
     Route::put('/products/{id}', 'ProductController@update');
