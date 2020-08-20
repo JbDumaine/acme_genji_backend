@@ -83,18 +83,4 @@ class ProductController extends Controller
         }
         return response()->json("Product id " . $id . " not removed. An error occurred", 500);
     }
-
-    /**
-     * Count number of products.
-     *
-     * @return JsonResponse
-     */
-    public function count()
-    {
-        $products = DB::table('products')->count();
-        if (!$products) {
-            return response()->json("No product in DataBase", 204);
-        }
-        return response()->json($products, 200);
-    }
 }

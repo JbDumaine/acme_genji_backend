@@ -85,18 +85,4 @@ class SupplierController extends Controller
         }
         return response()->json("Supplier id ".$id." not removed. An error occurred", 500);
     }
-
-    /**
-     * Count number of supplier.
-     *
-     * @return JsonResponse
-     */
-    public function count()
-    {
-        $suppliers = DB::table('suppliers')->count();
-        if (!$suppliers) {
-            return response()->json("No suppliers in DataBase", 204);
-        }
-        return response()->json($suppliers, 200);
-    }
 }

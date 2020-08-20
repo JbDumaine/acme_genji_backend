@@ -85,18 +85,4 @@ class CommandController extends Controller
         }
         return response()->json("Command id " . $id . " not removed. An error occurred", 500);
     }
-
-    /**
-     * Count number of commands.
-     *
-     * @return JsonResponse
-     */
-    public function count()
-    {
-        $commands = DB::table('commands')->count();
-        if (!$commands) {
-            return response()->json("No command in DataBase", 204);
-        }
-        return response()->json($commands, 200);
-    }
 }
