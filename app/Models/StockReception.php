@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Product;
+use App\Models\ProductStockReception;
 
 class StockReception extends Model
 {
@@ -21,17 +22,22 @@ class StockReception extends Model
         return $this->belongsTo('\App\Models\Supplier');
     }
 
-  // Method allowing to recover products of stock's reception.
-  public function products()
-  {
-      return $this->belongsToMany('\App\Models\Product', 'product_stock_receptions');
-  }
-    public function saveProductsStockReception($id,$productsStockArray)
+    // Method allowing to recover products of stock's reception.
+    public function products()
+    {
+        return $this->belongsToMany('\App\Models\Product', 'product_stock_receptions');
+    }
+    public function saveProductsStockReception($id, $productsStockArray)
     {
         foreach ($productsStockArray as $productStock) {
             $productStockReception = new ProductStockReception($productStock);
             $productStockReception->stock_reception_id = $id;
             if (!$productStockReception->save()) {
+                return null;
+            }
+            $product = Product::find($productStock['product_id']);
+            $product->stock_quantity += $productStockReception->product_quantity;
+            if (!$product->save()) {
                 return null;
             }
         }
