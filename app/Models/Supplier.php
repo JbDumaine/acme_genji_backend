@@ -22,7 +22,7 @@ class Supplier extends Model
     // Method allowing to recover products by supplier.
     public function products()
     {
-        return $this->hasMany('App\Models\Supplier');
+        return $this->hasMany('App\Models\Product');
     }
 
     // Method allowing to recover stock's receptions by supplier.
