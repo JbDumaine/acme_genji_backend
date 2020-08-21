@@ -15,7 +15,7 @@ class EditController extends Controller
      */
     public function editAllFlux()
     {
-        $commands = Command::with(['state', 'store'])->orderBy('delivery_date', 'desc')->get();
+        $commands = Command::with(['state', 'store'])->where('state_id', '=', 2)->orderBy('delivery_date', 'desc')->get();
         $stockReception = StockReception::with(['supplier'])->orderBy('reception_date','desc')->get();
         return response()->json(['Receptions' => $stockReception, 'Commands' => $commands]);
     }
