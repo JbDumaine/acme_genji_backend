@@ -24,7 +24,7 @@ Route::group([
 
 ], function () {
     //Home routes
-    Route::get('/', 'HomeController');
+    Route::get('/home', 'HomeController');
 
     //Suppliers routes
     Route::get('/suppliers', 'SupplierController@getAll');
