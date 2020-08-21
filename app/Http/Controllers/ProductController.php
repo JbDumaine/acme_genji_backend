@@ -65,7 +65,11 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $product->name = $request->name;
-
+        $product->description = $request->description;
+        $product->unit_price = $request->unit_price;
+        $product->unit_weight = $request->unit_weight;
+        $product->category_id = $request->category_id;
+        $product->supplier_id = $request->supplier_id;
         if ($product->save()) {
             return response()->json($product, 200);
         }
