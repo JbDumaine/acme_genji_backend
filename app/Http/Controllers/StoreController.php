@@ -43,6 +43,9 @@ class StoreController extends Controller
     public function get(int $id)
     {
         $store = Store::find($id);
+        $store->city;
+        $store->users;
+        $store->commands;
         if ($store) {
             return response()->json($store, 200);
         }
