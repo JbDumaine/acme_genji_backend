@@ -51,8 +51,14 @@ class User extends Authenticatable
     ];
 
     // Method allowing to recover store of user.
-    public function getStore()
+    public function store()
     {
         return $this->belongsTo('\App\Models\Store');
+    }
+
+    // Method allowing to recover role of user.
+    public function role()
+    {
+        return $this->belongsTo('\App\Models\Role');
     }
 }
