@@ -40,6 +40,7 @@ Route::group([
     Route::post('/products', 'ProductController@create');
     Route::put('/products/{id}', 'ProductController@update');
     Route::delete('/products/{id}', 'ProductController@destroy');
+    Route::get('/products/search/{term}', 'ProductController@getByTerms');
 
     //Categories routes
     Route::get('/categories', 'CategoryController@getAll');
@@ -54,6 +55,7 @@ Route::group([
     Route::post('/stock_receptions', 'StockReceptionController@create');
     Route::put('/stock_receptions/{id}', 'StockReceptionController@update');
     Route::delete('/stock_receptions/{id}', 'StockReceptionController@destroy');
+
 
     //Store routes
     Route::get('/stores', 'StoreController@getAll');
