@@ -28,7 +28,7 @@ class Command extends Model
     // Method allowing to recover products of command.
     public function products()
     {
-        return $this->belongsToMany('\App\Models\Product', 'product_commands');
+        return $this->belongsToMany('\App\Models\Product', 'product_commands')->withPivot('product_quantity');
     }
 
     public function saveProductsCommand($id, $productsStockArray)

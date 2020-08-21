@@ -46,6 +46,8 @@ class ProductController extends Controller
     public function get(int $id)
     {
         $product = Product::find($id);
+        $product->category;
+        $product->supplier;
         if ($product) {
             return response()->json($product, 200);
         }

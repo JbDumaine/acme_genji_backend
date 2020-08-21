@@ -25,9 +25,9 @@ class StockReception extends Model
     // Method allowing to recover products of stock's reception.
     public function products()
     {
-        return $this->belongsToMany('\App\Models\Product', 'product_stock_receptions');
+        return $this->belongsToMany('\App\Models\Product', 'product_stock_receptions')->withPivot('product_quantity');
     }
-  
+
     public function saveProductsStockReception($id, $productsStockArray)
     {
         foreach ($productsStockArray as $productStock) {

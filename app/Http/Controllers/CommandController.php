@@ -63,6 +63,10 @@ class CommandController extends Controller
     public function get(int $id)
     {
         $command = Command::find($id);
+        $command->state;
+        $command->store;
+        $command->products;
+
         if ($command) {
             return response()->json($command, 200);
         }

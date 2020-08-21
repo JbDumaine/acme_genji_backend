@@ -47,6 +47,8 @@ class StockReceptionController extends Controller
     public function get(int $id)
     {
         $stockReception = StockReception::find($id);
+        $stockReception->supplier;
+        $stockReception->products;
         if ($stockReception) {
             return response()->json($stockReception,200);
         }
