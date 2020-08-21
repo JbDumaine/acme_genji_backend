@@ -65,7 +65,8 @@ class SupplierController extends Controller
     {
         $supplier = Supplier::find($id);
         $supplier->name = $request->name;
-
+        $supplier->address = $request->address;
+        $supplier->city_id = $request->city_id;
         if ($supplier->save()) {
             return response()->json($supplier, 200);
         }
