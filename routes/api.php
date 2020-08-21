@@ -88,6 +88,8 @@ Route::group([
     Route::post('/product_commands', 'ProductCommandController@create');
     Route::put('/product_commands/{id}', 'ProductCommandController@update');
     Route::delete('/product_commands/{id}','ProductCommandController@destroy');
+
+    Route::get('/historics_flux', 'EditController@editAllFlux');
 });
 
 //Auth routes
