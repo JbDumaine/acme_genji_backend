@@ -33,6 +33,11 @@ class CreateRolesTable extends Migration
                 "name" => "ROLE_ADMIN",
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                "name" => "ROLE_CUSTOMER",
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ]
         ];
         foreach ($dataArray as $data) {
