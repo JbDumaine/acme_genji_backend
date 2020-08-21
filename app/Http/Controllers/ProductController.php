@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Supplier;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -107,21 +108,39 @@ class ProductController extends Controller
                 $category->products;
                 array_push($result, $category);
             }
-        }elseif ($groupBy === "supplier") {
+        } elseif ($groupBy === "supplier") {
             $suppliers = Supplier::all();
             $result = [];
             foreach ($suppliers as $supplier) {
                 $supplier->products;
                 array_push($result, $supplier);
             }
-        }else{
+        } else {
             return response()->json([
-                "message"=>"Bad Request For this route. ".$groupBy." unknow."
+                "message" => "Bad Request For this route. " . $groupBy . " unknow."
             ], 400);
         }
 
 
         return response()->json($result, 200);
         //return response()->json(["result" => null, "message" => "No result"], 404);
+    }
+
+    /**
+     * Display the specified resources by name.
+     *
+     * @param string $term
+     * @return JsonResponse
+     */
+    public function getByTerms(string $term)
+    {
+        $products = DB::table('products')
+            ->where('name', 'like', $term . "%")
+            ->orderBy('name', 'asc')
+            ->get();
+        if ($products) {
+            return response()->json($products, 200);
+        }
+        return response()->json(["result" => null, "message" => "No result"], 404);
     }
 }
