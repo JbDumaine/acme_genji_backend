@@ -12,6 +12,8 @@ class Command extends Model
 
     protected $fillable = ['command_number', 'delivery_date','store_id', 'state_id'];
 
+    protected $attributes = ['state_id' => 1];
+
 
     // Method allowing to recover state of command.
     public function state()
