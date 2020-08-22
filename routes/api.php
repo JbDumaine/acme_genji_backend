@@ -30,6 +30,10 @@ Route::group([
     Route::get('/users', 'UserController@getAll');
     Route::get('/users/{id}', 'UserController@get');
 
+    //Roles routes
+    Route::get('/roles', 'RoleController@getAll');
+    Route::get('/roles/{id}', 'RoleController@get');
+
     //Suppliers routes
     Route::get('/suppliers', 'SupplierController@getAll');
     Route::get('/suppliers/{id}', 'SupplierController@get');
