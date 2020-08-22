@@ -26,6 +26,14 @@ Route::group([
     //Home routes
     Route::get('/home', 'HomeController');
 
+    //Users routes
+    Route::get('/users', 'UserController@getAll');
+    Route::get('/users/{id}', 'UserController@get');
+
+    //Roles routes
+    Route::get('/roles', 'RoleController@getAll');
+    Route::get('/roles/{id}', 'RoleController@get');
+
     //Suppliers routes
     Route::get('/suppliers', 'SupplierController@getAll');
     Route::get('/suppliers/{id}', 'SupplierController@get');
@@ -40,6 +48,7 @@ Route::group([
     Route::post('/products', 'ProductController@create');
     Route::put('/products/{id}', 'ProductController@update');
     Route::delete('/products/{id}', 'ProductController@destroy');
+    Route::get('/products/search/{term}', 'ProductController@getByTerms');
 
     //Categories routes
     Route::get('/categories', 'CategoryController@getAll');
@@ -54,6 +63,7 @@ Route::group([
     Route::post('/stock_receptions', 'StockReceptionController@create');
     Route::put('/stock_receptions/{id}', 'StockReceptionController@update');
     Route::delete('/stock_receptions/{id}', 'StockReceptionController@destroy');
+
 
     //Store routes
     Route::get('/stores', 'StoreController@getAll');
@@ -87,7 +97,7 @@ Route::group([
     Route::get('/product_commands/{id}', 'ProductCommandController@get');
     Route::post('/product_commands', 'ProductCommandController@create');
     Route::put('/product_commands/{id}', 'ProductCommandController@update');
-    Route::delete('/product_commands/{id}','ProductCommandController@destroy');
+    Route::delete('/product_commands/{id}', 'ProductCommandController@destroy');
 
     Route::get('/historics_flux', 'EditController@editAllFlux');
 });
