@@ -26,6 +26,10 @@ Route::group([
     //Home routes
     Route::get('/home', 'HomeController');
 
+    //Users routes
+    Route::get('/users', 'UserController@getAll');
+    Route::get('/users/{id}', 'UserController@get');
+
     //Suppliers routes
     Route::get('/suppliers', 'SupplierController@getAll');
     Route::get('/suppliers/{id}', 'SupplierController@get');
@@ -89,7 +93,7 @@ Route::group([
     Route::get('/product_commands/{id}', 'ProductCommandController@get');
     Route::post('/product_commands', 'ProductCommandController@create');
     Route::put('/product_commands/{id}', 'ProductCommandController@update');
-    Route::delete('/product_commands/{id}','ProductCommandController@destroy');
+    Route::delete('/product_commands/{id}', 'ProductCommandController@destroy');
 
     Route::get('/historics_flux', 'EditController@editAllFlux');
 });

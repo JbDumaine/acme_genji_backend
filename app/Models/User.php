@@ -24,13 +24,6 @@ class User extends Authenticatable
         'first_name', 'last_name', 'email', 'password', 'role_id',
     ];
 
-    /**
-     * Default values for attributes
-     * @var  array an array with attribute as key and default as value
-     */
-    protected $attributes = [
-        'role_id' => 1,
-    ];
 
     /**
      * The attributes that should be hidden for arrays.
